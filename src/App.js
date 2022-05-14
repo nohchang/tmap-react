@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import $ from 'jquery';
 const { Tmapv2 } = window;
 
+
 const App = () => {
-  var map;
+  const [map, setMap]=useState(null)
+  
+  // var map;
   var markerInfo;
   //출발지,도착지 마커
   var marker_s, marker_e, marker_p;
@@ -18,14 +21,14 @@ const App = () => {
 
   const initTmap = () => {
     // 1. 지도 띄우기
-    map = new Tmapv2.Map("map_div", {
+    setMap(new Tmapv2.Map("map_div", {
       center: new Tmapv2.LatLng(37.49241689559544, 127.03171389453507),
       width: "100%",
       height: "400px",
       zoom: 11,
       zoomControl: true,
       scrollwheel: true,
-    });
+    }))
 
     // 2. 시작, 도착 심볼찍기
     // 시작
@@ -432,7 +435,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    initTmap();
+  // initTmap();
+    return ()=>initTmap()
   }, []);
 
   return (
@@ -467,7 +471,8 @@ const App = () => {
       </div>
 
       <div id="map_wrap" class="map_wrap">
-        <div id="map_div"></div>
+          <div id="map_div"></div>
+        
       </div>
       <div class="map_act_btn_wrap clear_box"></div>
       <p id="result"></p>
