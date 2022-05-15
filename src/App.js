@@ -1,13 +1,9 @@
-import './App.css';
-import { useEffect, useState } from 'react';
-import $ from 'jquery';
+import "./App.css";
+import { useEffect } from "react";
+import $ from "jquery";
 const { Tmapv2 } = window;
-
-
 const App = () => {
-  const [map, setMap]=useState(null)
-  
-  // var map;
+  var map;
   var markerInfo;
   //출발지,도착지 마커
   var marker_s, marker_e, marker_p;
@@ -21,14 +17,14 @@ const App = () => {
 
   const initTmap = () => {
     // 1. 지도 띄우기
-    setMap(new Tmapv2.Map("map_div", {
+    map = new Tmapv2.Map("map_div", {
       center: new Tmapv2.LatLng(37.49241689559544, 127.03171389453507),
       width: "100%",
-      height: "400px",
+      height: "600px",
       zoom: 11,
       zoomControl: true,
       scrollwheel: true,
-    }))
+    });
 
     // 2. 시작, 도착 심볼찍기
     // 시작
@@ -435,8 +431,7 @@ const App = () => {
   };
 
   useEffect(() => {
-  // initTmap();
-    return ()=>initTmap()
+    initTmap();
   }, []);
 
   return (
@@ -471,8 +466,7 @@ const App = () => {
       </div>
 
       <div id="map_wrap" class="map_wrap">
-          <div id="map_div"></div>
-        
+        <div id="map_div"></div>
       </div>
       <div class="map_act_btn_wrap clear_box"></div>
       <p id="result"></p>
