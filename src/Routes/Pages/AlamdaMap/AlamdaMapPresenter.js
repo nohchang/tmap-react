@@ -1,31 +1,27 @@
-import "./App.css";
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-import useCurrentLocation from "./hooks/useCurrentLocation";
-import useWatchLocation from "./hooks/useWatchLocation";
-import { geolocationOptions } from "./constants/geolocationOptions";
-import Location from "./components/Location";
+// import useCurrentLocation from "../../hooks/useCurrentLocation";
+// import useWatchLocation from "../../hooks/useWatchLocation";
+// import { geolocationOptions } from "../../constants/geolocationOptions";
+// import Location from "../../components/Location";
 const { Tmapv2 } = window;
 
-const App = () => {
-  //현재좌표
-  const { location: currentLocation, error: currentError } = useCurrentLocation(geolocationOptions);
-  const { location, cancelLocationWatch, error } = useWatchLocation(geolocationOptions);
-  const [isWatchinForLocation, setIsWatchForLocation] = useState(true);
+const AlamdaMapPresenter = () => {
+//   //현재좌표
+//   const { location: currentLocation, error: currentError } = useCurrentLocation(geolocationOptions);
+//   const { location, cancelLocationWatch, error } = useWatchLocation(geolocationOptions);
+//   const [isWatchinForLocation, setIsWatchForLocation] = useState(true);
 
-  useEffect(() => {
-    if (!location) return;
+//   useEffect(() => {
+//     if (!location) return;
 
-    // Cancel location watch after 3sec
-    setTimeout(() => {
-      cancelLocationWatch();
-      setIsWatchForLocation(false);
-    }, 3000);
-  }, [location, cancelLocationWatch]);
+//     // Cancel location watch after 3sec
+//     setTimeout(() => {
+//       cancelLocationWatch();
+//       setIsWatchForLocation(false);
+//     }, 3000);
+//   }, [location, cancelLocationWatch]);
 
-    // console.log(location.latitude)
-  //   console.log(location.longitude)
-  
   //TMAP
   var map, marker;
   var markerArr = [], labelArr = [];
@@ -207,5 +203,5 @@ const App = () => {
   );
 };
 
-  export default App;
+  export default AlamdaMapPresenter;
   
