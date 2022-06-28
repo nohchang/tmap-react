@@ -40,7 +40,11 @@
 .ft_area {
   margin-top: 50px;
 }
-/* 
-#map_div {
-  margin-top: 50px;
-} */
+
+.appContainer {
+  padding: 2rem;
+}
+
+.errorMessage {
+  color: red;
+}
