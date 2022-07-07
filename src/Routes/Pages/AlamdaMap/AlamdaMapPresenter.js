@@ -1,42 +1,26 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-// import useCurrentLocation from "../../hooks/useCurrentLocation";
-// import useWatchLocation from "../../hooks/useWatchLocation";
-// import { geolocationOptions } from "../../constants/geolocationOptions";
-// import Location from "../../components/Location";
 const { Tmapv2 } = window;
 
-const AlamdaMapPresenter = () => {
-//   //현재좌표
-//   const { location: currentLocation, error: currentError } = useCurrentLocation(geolocationOptions);
-//   const { location, cancelLocationWatch, error } = useWatchLocation(geolocationOptions);
-//   const [isWatchinForLocation, setIsWatchForLocation] = useState(true);
-
-//   useEffect(() => {
-//     if (!location) return;
-
-//     // Cancel location watch after 3sec
-//     setTimeout(() => {
-//       cancelLocationWatch();
-//       setIsWatchForLocation(false);
-//     }, 3000);
-//   }, [location, cancelLocationWatch]);
-
+const AlamdaMapPresenter = (props) => {
+    const { a, b } = props
   //TMAP
   var map, marker;
   var markerArr = [], labelArr = [];
     
   function initTmap() {
+      
       // 1. 지도 띄우기
       map = new Tmapv2.Map("map_div", {
-          center : new Tmapv2.LatLng(37.570028, 126.986072),
+        //   center : new Tmapv2.LatLng(37.570028, 126.986072),
+          center : new Tmapv2.LatLng(a, b),
           width : "70%",
           height : "400px",
           zoom : 15,
           zoomControl : true,
           scrollwheel : true
       });
-      
+
       // 2. POI 통합 검색 API 요청
       $("#btn_select").click(function(){
           var searchKeyword = $('#searchKeyword').val();
@@ -177,7 +161,7 @@ const AlamdaMapPresenter = () => {
   }
 
   useEffect(() => {
-    initTmap();
+    initTmap()
   }, []);
 
   return (
